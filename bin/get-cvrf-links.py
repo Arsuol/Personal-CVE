@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """ 
-Downloads CVE files from cve.org 
-Parses and translates to json
+Get links to CVRF files from cve.org 
 """
 __author__ = "Arthur Loussert"                                                   
 __email__ = "arsuol@gmail.com"                                                
@@ -20,9 +19,10 @@ driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
 driver.get("https://www.cve.org/Downloads")
 
 links = driver.find_elements(By.TAG_NAME, "a")
-for e in links:
-    tmp = e.get_attribute("href")
-    if "cvrf-year" in tmp:
-        print(tmp)
+with open('./data/cvrf-links.txt', 'w') as f:
+    for e in links:
+        tmp = e.get_attribute("href")
+        if "cvrf-year" in tmp:
+            f.write("%s\n" % tmp)
 
 driver.quit()
