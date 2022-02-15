@@ -18,7 +18,7 @@ with open('data/cvrf-links.txt') as f:
 #print (*links, sep = "\n")
 
 for link in links:
-    file_path = "./data/cvrf-" + link[-8:-4] + ".html"
+    file_path = "./data/cvrf-" + link[-8:-4] + ".xml"
     print ("getting file: " + file_path)
     with open(file_path, 'w') as f:
         r = requests.get(link)
