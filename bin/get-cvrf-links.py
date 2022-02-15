@@ -19,7 +19,7 @@ driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
 driver.get("https://www.cve.org/Downloads")
 
 links = driver.find_elements(By.TAG_NAME, "a")
-with open('./data/cvrf-links.txt', 'w') as f:
+with open('../data/cvrf-links.txt', 'w') as f:
     for e in links:
         tmp = e.get_attribute("href")
         if "cvrf-year" in tmp:
