@@ -28,6 +28,7 @@ __maintainer__ = "Arthur Loussert"
 
 from bs4 import BeautifulSoup
 import requests
+import unicodedata
 
 debug = False
 
@@ -37,9 +38,10 @@ debug = False
 ##   - don't need to write page, it was only a test
 ##   - beautiful soup from page.content, dont save/open html page
 #url_nist = "https://nvd.nist.gov/vuln/detail/CVE-2021-44228"
+#url_nist = "https://nvd.nist.gov/vuln/detail/CVE-2021-44228/cpes"
 #page = requests.get(url_nist)
 #soup = BeautifulSoup(page.content, 'html.parser')
-#f = open("./test.txt", "w")
+#f = open("./log4js_cpes.txt", "w")
 #f.write(page.text)
 
 file = open("log4js.txt", "r")
@@ -188,13 +190,31 @@ for i in range(len(cwe)):
         sources.append(tmp.text[2:index1])
     cwe[i].append(sources)
 
-
+#References
 references = []
-#caped = [] #??
+ref_index = 0
+while 1:
+    name = "vuln-hyperlinks-row-" + str(ref_index)
+    tmp = soup.find(attrs={"data-testid": name})
+    if tmp == None:
+        break
+    ref_index += 1
+    tmp_l = str(tmp.text).splitlines()
+    tmp_l[:] = (value for value in tmp_l if value != "") #remove empty strings
+    tmp_l[:] = (value for value in tmp_l if value[0] != "\t") #remove empty strings
+    for i in range(len(tmp_l)):
+        tmp_l[i] = unicodedata.normalize("NFKD", tmp_l[i])
+        if tmp_l[i][-1] == ' ':
+            tmp_l[i] = tmp_l[i][:-1]
+    references.append(tmp_l)
+
+
+
+
+
 #vuln_conf = []
 
 
-debug=True
 if debug == True:
     print("cve_id " + cve_id)
     print("published date " + published_date)
@@ -205,4 +225,6 @@ if debug == True:
     print("status " + status)
     print("cvss " + str(cvss))
     print("cwe " + str(cwe))
+    print("references:\n")
+    print(*references, sep='\n')
 
