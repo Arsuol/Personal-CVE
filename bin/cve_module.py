@@ -10,6 +10,7 @@ def insert_newlines_and(string, to_add, every=64):
 
 def basic_table(data, limit):
     table = PrettyTable(['CVE', 'CVSS', 'Summary', 'Published', 'Updated'])
+    table.align = "l"
     i = 0
     for d in data['CVE_Items']:
         id_ = (d['cve']['CVE_data_meta']['ID'])
@@ -28,6 +29,7 @@ def basic_table(data, limit):
     return table
 
 def specific_table(d):
+    ##Get data
     #cve id
     id_ = (d['cve']['CVE_data_meta']['ID'])
     #source
@@ -90,11 +92,7 @@ def specific_table(d):
         for i in range(16):
             cvss2.append('NA')
 
-
-
-
-
-    ## DEBUG PRINT
+    ##Create Table
     table = PrettyTable(['a','b'])
     table.set_style(PLAIN_COLUMNS)
     table.header = False
@@ -160,4 +158,18 @@ def specific_table(d):
     table.add_row(["References: ", tmp_str])
     return table
 
-
+def search_table(l):
+    table = PrettyTable(['CVE', 'CVSS', 'Summary', 'Published', 'Updated'])
+    table.align = "l"
+    for d in l:
+        id_ = (d['cve']['CVE_data_meta']['ID'])
+        description = (d['cve']['description']['description_data'][0]['value'])
+        description = insert_newlines(description, 64)
+        if "baseMetricV3" in d['impact']:
+            cvss = (d['impact']['baseMetricV3']['cvssV3']['baseScore'])
+        else:
+            cvss = 'NA'
+        up_date = (d['lastModifiedDate'])
+        pub_date = (d['publishedDate'])
+        table.add_row([id_, cvss, description, pub_date[:10], up_date[:10]])
+    return table
