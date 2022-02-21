@@ -1,0 +1,6 @@
+{
+    "ApiKey"            : "API Key",
+    "ApiKeySecret"      : "API Key Secret",
+    "AccessToken"       : "Access Token",
+    "AccessTokenSecret" : "Access Token Secret"
+}
