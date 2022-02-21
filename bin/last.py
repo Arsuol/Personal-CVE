@@ -17,5 +17,5 @@ file = '../data/' + files[-3]
 with open(file) as f:
     data = json.load(f)
 
-table = cve_module.create_table(data, limit)
+table = cve_module.basic_table(data, limit)
 print(table)
