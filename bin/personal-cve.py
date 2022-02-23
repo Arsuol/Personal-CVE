@@ -1,4 +1,6 @@
-import os
+import last
+import recent
+import cve
 import search
 
 def yes_or_no(question):
@@ -43,11 +45,11 @@ def process(reply):
     if reply[0] == "help" or reply[0] == "h" or reply[0] == "helper":
         helper()
     if reply[0] == "last" or reply[0] == "l":
-        os.system("python3 ./02-last.py " + args)
+        last.last(args)
     if reply[0] == "recent" or reply[0] == "r":
-        os.system("python3 ./03-recent.py " + args)
+        recent.recent(args)
     if reply[0] == "cve" or reply[0] == "c":
-        os.system("python3 ./04-cve.py " + args)
+        cve.cve(args)
     if reply[0] == "search" or reply[0] == "s":
         search.search(args)
 
