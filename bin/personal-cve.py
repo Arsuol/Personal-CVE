@@ -39,7 +39,7 @@ def process(reply):
     if reply[0] == "last" or reply[0] == "l":
         os.system("python3 ./02-last.py " + args)
     if reply[0] == "recent" or reply[0] == "r":
-        os.system("python3 ./02-last.py " + args)
+        os.system("python3 ./03-recent.py " + args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
