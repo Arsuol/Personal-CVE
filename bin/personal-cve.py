@@ -4,6 +4,7 @@ import cve
 import search
 import twitter
 import exploitdb
+import github
 
 def yes_or_no(question):
     while "the answer is invalid":
@@ -25,7 +26,8 @@ def menuChoice():
              'cve',      'c',
              'search',   's',
              'twitter',  't',
-             'exploitDB','e',   'exploitdb',    'exploit'
+             'exploitDB','e',   'exploitdb',    'exploit',
+             'github',   'g'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -60,6 +62,8 @@ def process(reply):
         twitter.twitter(args)
     if reply[0] == "exploitDB" or reply[0] == "exploitdb" or reply[0] == "exploit" or reply[0] == "e":
         exploitdb.exploitdb(args)
+    if reply[0] == "github" or reply[0] == "g":
+        github.github(args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
