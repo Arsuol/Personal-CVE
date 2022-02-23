@@ -1,9 +1,11 @@
-import json
+import sys
 from os import listdir
 from os.path import isfile, join
+import json
 import cve_module
 
-search_id = 'CVE-2021-44228'
+#Get arguments
+search_id = str(sys.argv[1])
 
 #Get json files listing
 path = '../data/'
@@ -23,4 +25,7 @@ for d in data['CVE_Items']:
     if (d['cve']['CVE_data_meta']['ID']) == search_id:
         table = cve_module.specific_table(d)
         break
-print(table)
+if table == "":
+    print('CVE Not Found!')
+else:
+    print(table)
