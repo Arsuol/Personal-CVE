@@ -1,3 +1,9 @@
+__author__ = "Arthur Tressuol"
+__email__ = "arthur.tressuol@gmail.com"
+__credits__ = "Arthur Tressuol"
+__date__ = "February 2022"
+__revision__ = "1.0"
+
 import time
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
