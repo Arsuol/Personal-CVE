@@ -5,7 +5,11 @@ import json
 import cve_module
 
 #Get arguments
-search_id = str(sys.argv[1])
+if len(sys.argv) > 1:
+    search_id = str(sys.argv[1]).upper()
+else:
+    print("usage: cve CVE-XXXX-XXXX")
+    quit()
 
 #Get json files listing
 path = '../data/'

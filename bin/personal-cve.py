@@ -16,7 +16,8 @@ def menuChoice():
     valid = ['quit', 'q',
              'help', 'h', 'helper',
              'last', 'l',
-             'recent', 'r'
+             'recent', 'r',
+             'cve', 'c'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -40,6 +41,8 @@ def process(reply):
         os.system("python3 ./02-last.py " + args)
     if reply[0] == "recent" or reply[0] == "r":
         os.system("python3 ./03-recent.py " + args)
+    if reply[0] == "cve" or reply[0] == "c":
+        os.system("python3 ./04-cve.py " + args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
