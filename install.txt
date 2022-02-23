@@ -1,9 +1,0 @@
-beautifulsoup4
-selenium
-webdriver-manager
-wget
-PrettyTable
-praw
-tweepy
-google-api-python-client
-#google-auth-oauthlib google-auth-httplib2
