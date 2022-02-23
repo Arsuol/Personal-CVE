@@ -2,6 +2,7 @@ import last
 import recent
 import cve
 import search
+import twitter
 
 def yes_or_no(question):
     while "the answer is invalid":
@@ -16,12 +17,13 @@ def helper():
     print("TODO")
 
 def menuChoice():
-    valid = ['quit', 'q',
-             'help', 'h', 'helper',
-             'last', 'l',
-             'recent', 'r',
-             'cve', 'c',
-             'search', 's'
+    valid = ['quit',    'q',
+             'help',    'h',    'helper',
+             'last',    'l',
+             'recent',  'r',
+             'cve',     'c',
+             'search',  's',
+             'twitter', 't'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -52,6 +54,8 @@ def process(reply):
         cve.cve(args)
     if reply[0] == "search" or reply[0] == "s":
         search.search(args)
+    if reply[0] == "twitter" or reply[0] == "t":
+        twitter.twitter(args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
