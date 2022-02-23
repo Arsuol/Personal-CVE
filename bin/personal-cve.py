@@ -15,7 +15,8 @@ def helper():
 def menuChoice():
     valid = ['quit', 'q',
              'help', 'h', 'helper',
-             'last', 'l'
+             'last', 'l',
+             'recent', 'r'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -36,6 +37,8 @@ def process(reply):
     if reply[0] == "help" or reply[0] == "h" or reply[0] == "helper":
         helper()
     if reply[0] == "last" or reply[0] == "l":
+        os.system("python3 ./02-last.py " + args)
+    if reply[0] == "recent" or reply[0] == "r":
         os.system("python3 ./02-last.py " + args)
 
 def banner():
