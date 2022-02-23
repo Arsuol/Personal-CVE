@@ -1,3 +1,5 @@
+import os
+
 def yes_or_no(question):
     while "the answer is invalid":
         reply = str(input(question+' (y/n): ')).lower().strip()
@@ -11,7 +13,10 @@ def helper():
     print("TODO")
 
 def menuChoice():
-    valid = ['quit', 'q']
+    valid = ['quit', 'q',
+             'help', 'h', 'helper',
+             'last', 'l'
+            ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
         process(reply)
@@ -21,10 +26,17 @@ def menuChoice():
         menuChoice()
 
 def process(reply):
+    #Check arguments
+    args = ''
+    if len(reply) > 1:
+        args = reply[1]
+    #Check command
     if reply[0] == "quit" or reply[0] == "q":
         quit()
     if reply[0] == "help" or reply[0] == "h" or reply[0] == "helper":
         helper()
+    if reply[0] == "last" or reply[0] == "l":
+        os.system("python3 ./02-last.py " + args)
 
 def banner():
     print(" ___                           _  _____   _____ ")

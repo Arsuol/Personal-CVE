@@ -1,9 +1,14 @@
+import sys
 import json
 from os import listdir
 from os.path import isfile, join
 import cve_module
 
+#Get arguments
 limit = 10
+if len(sys.argv) > 1:
+    if str(sys.argv[1]).isdigit():
+        limit = int(sys.argv[1])
 
 #Get json files listing
 path = '../data/'
