@@ -9,6 +9,13 @@ import github
 import reddit
 import youtube
 
+def banner():
+    print(" ___                           _  _____   _____ ")
+    print("| _ \___ _ _ ___ ___ _ _  __ _| |/ __\ \ / / __|")
+    print("|  _/ -_) '_(_-</ _ \ ' \/ _` | | (__ \ V /| _| ")
+    print("|_| \___|_| /__/\___/_||_\__,_|_|\___| \_/ |___|")
+    print("\n")
+
 def yes_or_no(question):
     while "the answer is invalid":
         reply = str(input(question+' (y/n): ')).lower().strip()
@@ -18,8 +25,23 @@ def yes_or_no(question):
             return False
 
 def helper():
-    print("This is the helper\nPossible commands = <3")
-    print("TODO")
+    print("#############################################################")
+    print("usage: Option [Arguments]")
+    print("#############################################################")
+    print("Options and Arguments:")
+    print("\tq, quit    - Quit the script")
+    print("\th, help    - Print this helper")
+    print("\tu, update  - Update the CVE database")
+    print("\tl, last    - Print last CVE modifications")
+    print("\tr, recent  - Print recent CVE entries")
+    print("\tc, cve     - Search for specific CVE id\n\t\t\tArgument: cve-id")
+    print("\ts, search  - Search for arguments in CVE descriptions\n\t\t\tArguments: arg1 arg2 ...")
+    print("\te, exploit - Search for specific CVE id on ExploitDB\n\t\t\tArgument: cve-id")
+    print("\tt, twitter - Search for arguments on Twitter\n\t\t\tArguments: arg1 arg2 ...")
+    print("\tg, github  - Search for arguments on GitHub\n\t\t\tArguments: arg1 arg2 ...")
+    print("\td, reddit  - Search for arguments on Reddit\n\t\t\tArguments: arg1 arg2 ...")
+    print("\ty, youtube - Search for arguments on YouTube\n\t\t\tArguments: arg1 arg2 ...")
+    print("#############################################################")
 
 def menuChoice():
     valid = ['quit',     'q',
@@ -76,13 +98,6 @@ def process(reply):
         reddit.reddit(args)
     if reply[0] == "youtube" or reply[0] == "y":
         youtube.youtube(args)
-
-def banner():
-    print(" ___                           _  _____   _____ ")
-    print("| _ \___ _ _ ___ ___ _ _  __ _| |/ __\ \ / / __|")
-    print("|  _/ -_) '_(_-</ _ \ ' \/ _` | | (__ \ V /| _| ")
-    print("|_| \___|_| /__/\___/_||_\__,_|_|\___| \_/ |___|")
-    print("\n")
 
 def main():
     banner()
