@@ -1,4 +1,5 @@
 import os
+import search
 
 def yes_or_no(question):
     while "the answer is invalid":
@@ -17,7 +18,8 @@ def menuChoice():
              'help', 'h', 'helper',
              'last', 'l',
              'recent', 'r',
-             'cve', 'c'
+             'cve', 'c',
+             'search', 's'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -30,7 +32,10 @@ def menuChoice():
 def process(reply):
     #Check arguments
     args = ''
-    if len(reply) > 1:
+    if len(reply) > 2:
+        args = reply.copy()
+        args.pop(0)
+    elif len(reply) > 1:
         args = reply[1]
     #Check command
     if reply[0] == "quit" or reply[0] == "q":
@@ -43,6 +48,8 @@ def process(reply):
         os.system("python3 ./03-recent.py " + args)
     if reply[0] == "cve" or reply[0] == "c":
         os.system("python3 ./04-cve.py " + args)
+    if reply[0] == "search" or reply[0] == "s":
+        search.search(args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
