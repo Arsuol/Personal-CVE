@@ -3,6 +3,7 @@ import recent
 import cve
 import search
 import twitter
+import exploitdb
 
 def yes_or_no(question):
     while "the answer is invalid":
@@ -17,13 +18,14 @@ def helper():
     print("TODO")
 
 def menuChoice():
-    valid = ['quit',    'q',
-             'help',    'h',    'helper',
-             'last',    'l',
-             'recent',  'r',
-             'cve',     'c',
-             'search',  's',
-             'twitter', 't'
+    valid = ['quit',     'q',
+             'help',     'h',   'helper',
+             'last',     'l',
+             'recent',   'r',
+             'cve',      'c',
+             'search',   's',
+             'twitter',  't',
+             'exploitDB','e',   'exploitdb',    'exploit'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -56,6 +58,8 @@ def process(reply):
         search.search(args)
     if reply[0] == "twitter" or reply[0] == "t":
         twitter.twitter(args)
+    if reply[0] == "exploitDB" or reply[0] == "exploitdb" or reply[0] == "exploit" or reply[0] == "e":
+        exploitdb.exploitdb(args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
