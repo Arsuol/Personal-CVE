@@ -6,6 +6,7 @@ import twitter
 import exploitdb
 import github
 import reddit
+import youtube
 
 def yes_or_no(question):
     while "the answer is invalid":
@@ -29,7 +30,8 @@ def menuChoice():
              'twitter',  't',
              'exploitDB','e',   'exploitdb',    'exploit',
              'github',   'g',
-             'reddit',   'd'
+             'reddit',   'd',
+             'youtube',  'y'
             ]
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
@@ -68,6 +70,8 @@ def process(reply):
         github.github(args)
     if reply[0] == "reddit" or reply[0] == "d":
         reddit.reddit(args)
+    if reply[0] == "youtube" or reply[0] == "y":
+        youtube.youtube(args)
 
 def banner():
     print(" ___                           _  _____   _____ ")
