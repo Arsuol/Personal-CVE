@@ -27,5 +27,5 @@ The tool will print out the help information.
 ### APIs
 The tool uses multiple APIs to access data from Twitter, YouTube, and Reddit.  
 If you want to use these functionalities, you need to copy the relevant 
-configuration file '/conf/file.json_example' to /conf/file.json' and edit it 
+configuration file '/conf/file.json_example' to '/conf/file.json' and edit it 
 accordingly.
