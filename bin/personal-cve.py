@@ -1,3 +1,4 @@
+import update
 import last
 import recent
 import cve
@@ -23,6 +24,7 @@ def helper():
 def menuChoice():
     valid = ['quit',     'q',
              'help',     'h',   'helper',
+             'update',   'u',
              'last',     'l',
              'recent',   'r',
              'cve',      'c',
@@ -54,6 +56,8 @@ def process(reply):
         quit()
     if reply[0] == "help" or reply[0] == "h" or reply[0] == "helper":
         helper()
+    if reply[0] == "update" or reply[0] == "u":
+        update.update()
     if reply[0] == "last" or reply[0] == "l":
         last.last(args)
     if reply[0] == "recent" or reply[0] == "r":
@@ -84,7 +88,7 @@ def main():
     banner()
     #Update Database?
     if yes_or_no("Do you want to update the Database?"):
-        print("TODO")
+        update.update()
     #Print Commands
     helper()
     #Answer requests
