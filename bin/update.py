@@ -9,10 +9,6 @@ def update():
     url_nist_feed = "https://nvd.nist.gov/vuln/data-feeds"
     page = requests.get(url_nist_feed)
     soup = BeautifulSoup(page.content, 'html.parser')
-    ##TODO: Remove when done
-    #file = open("../data/nist_feed.html", "r")
-    #content = file.read()
-    #soup = BeautifulSoup(content, 'html.parser')
     
     #Parse the page: only keep urls to download rson cve zip files
     tmp_l = str(soup.find(id="divJSONFeeds")).splitlines()
