@@ -62,13 +62,14 @@ def update():
         json_zips[i] = file_path + file_name[:-4]
 
     #Print out data matching followed keywords
-    #Extract new data
+    #Get keywords
     with open('../conf/interest.dat') as f:
         content = f.read()
         search_keywords = content.split('\n')
         search_keywords.pop()
     l = []
     b = False
+    #Extract new data
     #Open files
     for key in tmp_dict:
         file_path = "../data/" + key[20:-4]
