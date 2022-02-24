@@ -5,6 +5,7 @@ __date__ = "February 2022"
 __revision__ = "1.0"
 
 import update
+import stats
 import last
 import recent
 import cve
@@ -16,28 +17,44 @@ import reddit
 import youtube
 
 def banner():
-    print(" ___                           _  _____   _____ ")
-    print("| _ \___ _ _ ___ ___ _ _  __ _| |/ __\ \ / / __|")
-    print("|  _/ -_) '_(_-</ _ \ ' \/ _` | | (__ \ V /| _| ")
-    print("|_| \___|_| /__/\___/_||_\__,_|_|\___| \_/ |___|")
+    print("        ___                           _  _____   _____ ")
+    print("       | _ \___ _ _ ___ ___ _ _  __ _| |/ __\ \ / / __|")     
+    print("       |  _/ -_) '_(_-</ _ \ ' \/ _` | | (__ \ V /| _| ")
+    print("       |_| \___|_| /__/\___/_||_\__,_|_|\___| \_/ |___|")
     print("\n")
+
+def stats_print():
+    print("-------------------------------------------------------------")
+    print("                          CVE Stats                          ")
+    print("-------------------------------------------------------------")
+    try:
+        with open('../data/stats.dat') as f:
+            lines = f.readlines()
+            for l in lines:
+                print(l[:-1])
+    except IOError:
+        print("No stats to print out, use the stats option to generate reports")
+    print('\n\n')
 
 def yes_or_no(question):
     while "the answer is invalid":
         reply = str(input(question+' (y/n): ')).lower().strip()
         if reply[0] == 'y':
+            print('\n\n')
             return True
         if reply[0] == 'n':
+            print('\n\n')
             return False
 
 def helper():
-    print("#############################################################")
-    print("usage: Option [Arguments]")
-    print("#############################################################")
+    print("-------------------------------------------------------------")
+    print("Usage: Option [Arguments]")
+    print("-------------------------------------------------------------")
     print("Options and Arguments:")
     print("\tq, quit    - Quit the script")
     print("\th, help    - Print this helper")
     print("\tu, update  - Update the CVE database")
+    print("\ta, stats   - Traverse the database and prints out stats")
     print("\tl, last    - Print last CVE modifications")
     print("\tr, recent  - Print recent CVE entries")
     print("\tc, cve     - Search for specific CVE id\n\t\t\tArgument: cve-id")
@@ -47,12 +64,14 @@ def helper():
     print("\tg, github  - Search for arguments on GitHub\n\t\t\tArguments: arg1 arg2 ...")
     print("\td, reddit  - Search for arguments on Reddit\n\t\t\tArguments: arg1 arg2 ...")
     print("\ty, youtube - Search for arguments on YouTube\n\t\t\tArguments: arg1 arg2 ...")
-    print("#############################################################")
+    print("-------------------------------------------------------------")
+    print('\n')
 
 def menuChoice():
     valid = ['quit',     'q',
              'help',     'h',   'helper',
              'update',   'u',
+             'stats',    'a',
              'last',     'l',
              'recent',   'r',
              'cve',      'c',
@@ -66,6 +85,7 @@ def menuChoice():
     reply = str(input('Command: ')).lower().strip().split(' ')
     if reply[0] in valid:
         process(reply)
+        print('\n')
     else:
         print('Invalid Option')
         helper()
@@ -86,6 +106,8 @@ def process(reply):
         helper()
     if reply[0] == "update" or reply[0] == "u":
         update.update()
+    if reply[0] == "stats" or reply[0] == "a":
+        stats.stats()
     if reply[0] == "last" or reply[0] == "l":
         last.last(args)
     if reply[0] == "recent" or reply[0] == "r":
@@ -107,6 +129,7 @@ def process(reply):
 
 def main():
     banner()
+    stats_print()
     #Update Database?
     if yes_or_no("Do you want to update the Database?"):
         update.update()
