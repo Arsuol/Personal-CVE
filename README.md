@@ -24,6 +24,13 @@ python3 ./bin/personalcve.py
 ```
 The tool will print out the help information.  
 
+### Interest Keywords
+You can 'subscribe' to keywords with the tool.  
+Every time the database is uploaded, it will print out CVE entries containing any 
+keyword in its description.  
+To subscribe to a keyword copy the '/conf/interest.dat_example' to 
+'/conf/interest.dat' and write your keywords in it, one per line.
+
 ### APIs
 The tool uses multiple APIs to access data from Twitter, YouTube, and Reddit.  
 If you want to use these functionalities, you need to copy the relevant 
