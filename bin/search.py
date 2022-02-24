@@ -67,8 +67,6 @@ def search(args):
     table = cve_module.search_table(l)
     print(table)
 
-
-
     ##Threaded implementation: NOT FASTER, TODO: Debug
     #Distribute work to threads
     #remain = len(files)
@@ -102,5 +100,3 @@ def search(args):
     ##Print results
     #for i in range(th_number):
     #    print(th_return[i])
-
-search('debian')
