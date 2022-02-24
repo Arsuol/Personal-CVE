@@ -9,8 +9,6 @@ import json
 from prettytable import PrettyTable
 from cve_module import insert_newlines
 
-followed_accounts = ['CVEnew', 'ExploitDB']
-
 def create_twitter_api(json_file = '../conf/twitter_conf.json'):
     with open(json_file) as f:
         data = json.load(f)
@@ -33,6 +31,13 @@ def twitter(args):
     #Get relevant information
     table = PrettyTable(['User', 'Tweet' ,'RT count', 'Date'])
     table.align = "l"
+
+    #Get followed accounts
+    with open('../conf/twitter_follows.dat') as f:
+        content = f.read()
+        followed_accounts = content.split('\n')
+        followed_accounts.pop()
+    print(followed_accounts)
     
     for accs in followed_accounts:
         query = 'from:' + followed_accounts[0] + ' ' + search_keywords
