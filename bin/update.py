@@ -83,6 +83,7 @@ def update():
                     b = True
     #Process table
     if b == True:
-        print('There are new CVE entries matching your interest keywords:')
+        print('\n\nThere are new CVE entries matching your interest keywords:')
         table = cve_module.search_table(l)
         print(table)
+        print('\n\n')
