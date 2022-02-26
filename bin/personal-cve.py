@@ -88,7 +88,6 @@ def menuChoice():
         print('\n')
     else:
         print('Invalid Option')
-        helper()
         menuChoice()
 
 def process(reply):
@@ -120,7 +119,7 @@ def process(reply):
         twitter.twitter(args)
     if reply[0] == "exploitDB" or reply[0] == "exploitdb" or reply[0] == "exploit" or reply[0] == "e":
         exploitdb.exploitdb(args)
-    if reply[0] == "github" or reply[0] == "g":
+    if reply[0] == "github" or reply[0] == "git" or reply[0] == "g":
         github.github(args)
     if reply[0] == "reddit" or reply[0] == "d":
         reddit.reddit(args)
