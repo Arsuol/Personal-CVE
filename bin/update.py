@@ -42,6 +42,10 @@ def update():
         for key in old_dict:
             if old_dict[key] == tmp_dict[key]:
                 tmp_dict.pop(key)
+
+    if bool(tmp_dict) == False:
+        print("Database already up to date\n\n")
+        return
     
     #Print data for future database update
     json.dump(new_dict, open(filename,'w'))
