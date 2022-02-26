@@ -37,7 +37,6 @@ def twitter(args):
         content = f.read()
         followed_accounts = content.split('\n')
         followed_accounts.pop()
-    print(followed_accounts)
     
     for accs in followed_accounts:
         query = 'from:' + followed_accounts[0] + ' ' + search_keywords
