@@ -8,6 +8,8 @@ from bs4 import BeautifulSoup
 import requests
 import wget
 import os
+import os.path
+from os import path
 import json
 import cve_module
 
