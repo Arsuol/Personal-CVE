@@ -66,28 +66,29 @@ def update():
         json_zips[i] = file_path + file_name[:-4]
 
     #Print out data matching followed keywords
-    #Get keywords
-    with open('../conf/interest.dat') as f:
-        content = f.read()
-        search_keywords = content.split('\n')
-        search_keywords.pop()
-    l = []
-    b = False
-    #Extract new data
-    #Open files
-    for key in tmp_dict:
-        file_path = "../data/" + key[20:-4]
-        with open(file_path) as f:
-            data = json.load(f)
-            #Search for CVE with keywords
-            for d in data['CVE_Items']:
-                description = (d['cve']['description']['description_data'][0]['value'])
-                if any(x in description.lower() for x in search_keywords):
-                    l.append(d)
-                    b = True
-    #Process table
-    if b == True:
-        print('\n\nThere are new CVE entries matching your interest keywords:')
-        table = cve_module.search_table(l)
-        print(table)
-        print('\n\n')
+    if path.exists('../conf/interest.dat'):
+        #Get keywords
+        with open('../conf/interest.dat') as f:
+            content = f.read()
+            search_keywords = content.split('\n')
+            search_keywords.pop()
+        l = []
+        b = False
+        #Extract new data
+        #Open files
+        for key in tmp_dict:
+            file_path = "../data/" + key[20:-4]
+            with open(file_path) as f:
+                data = json.load(f)
+                #Search for CVE with keywords
+                for d in data['CVE_Items']:
+                    description = (d['cve']['description']['description_data'][0]['value'])
+                    if any(x in description.lower() for x in search_keywords):
+                        l.append(d)
+                        b = True
+        #Process table
+        if b == True:
+            print('\n\nThere are new CVE entries matching your interest keywords:')
+            table = cve_module.search_table(l)
+            print(table)
+            print('\n\n')
