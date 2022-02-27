@@ -57,6 +57,9 @@ def stats():
         else:
             percentage = round(cvss_score[i]/total * 100, 2)
         table.add_row([str(str(i) + '-' + str(i+1)), cvss_score[i], percentage])
+    print(table)
+    print('Total CVE entries: ' + str(total))
+    print('Average CVSS score: ' + str(cvss_total/total))
     
     #Save stats for later
     with open('../data/stats.dat', 'w') as f:
